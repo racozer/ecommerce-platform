@@ -31,7 +31,10 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Data\Enums\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.BuildingBlocks\Platform.Api.Core.BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>

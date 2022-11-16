@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 
 using Microsoft.EntityFrameworkCore;
 
+using Platform.Api.Core.BuildingBlocks.Middlewares;
 using Platform.Api.Services.Client.Product.Data;
 
 
@@ -28,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 
