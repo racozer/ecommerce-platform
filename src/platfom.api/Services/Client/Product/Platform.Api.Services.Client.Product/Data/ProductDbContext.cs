@@ -10,6 +10,8 @@ public class ProductDbContext : DbContext
     public ProductDbContext(DbContextOptions<ProductDbContext> options) : base(options) { }
 
     public DbSet<Entities.Product> Products { get; set; }
+    public DbSet<Entities.Category> Categories { get; set; }
+    public DbSet<Entities.ProductBrand> ProductBrands { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
