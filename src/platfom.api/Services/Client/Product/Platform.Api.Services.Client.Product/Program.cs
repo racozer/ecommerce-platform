@@ -1,41 +1,21 @@
-using System.Text.Json.Serialization;
-
-using Microsoft.EntityFrameworkCore;
-
-using Platform.Api.Core.BuildingBlocks.Middlewares;
-using Platform.Api.Services.Client.Product.Data;
+using Microsoft.AspNetCore;
+using Platform.Api.Core.ApplicationRunner;
 
 
-var builder = WebApplication.CreateBuilder(args);
+namespace Platform.Api.Services.Client.Product;
 
-// Add services to the container.
-builder.Services.AddControllers()
-.AddJsonOptions(
-    options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<ProductDbContext>(options
-    => options.UseSqlServer(builder.Configuration["ConnectionStrings:SQLServer"]));
-
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+public class Program
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public static void Main()
+    {
+        ApiRunner.RunApi<Startup>();
+    }
+
+/*    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+
+    public static void Main(string[] args)
+    {
+        CreateWebHostBuilder(args).Build().Run();
+    }*/
 }
-
-app.UseMiddleware<ExceptionHandlerMiddleware>();
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
