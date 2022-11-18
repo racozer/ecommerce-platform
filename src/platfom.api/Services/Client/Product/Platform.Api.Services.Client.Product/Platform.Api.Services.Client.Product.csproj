@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.ApplicationRunner\Platform.Api.Core.ApplicationRunner.csproj" />
     <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.BuildingBlocks\Platform.Api.Core.BuildingBlocks.csproj" />
   </ItemGroup>
 
