@@ -9,10 +9,9 @@ using Platform.Api.Services.Client.Product.Data;
 
 public class Startup
 {
-    public Startup(IConfiguration configuration, IWebHostEnvironment env)
+    public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
-
         AppSettings = new AppSettings();
         Configuration.Bind(AppSettings);
     }
@@ -21,18 +20,19 @@ public class Startup
 
     private AppSettings AppSettings { get; set; }
 
+
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers()
             .AddJsonOptions(
                  options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+
         services.AddSwaggerGen();
 
-        // services.AddDbContext<ProductDbContext>(options
-        //      => options.UseSqlServer(builder.Configuration["ConnectionStrings:SQLServer"]));
         services.AddEndpointsApiExplorer();
 
-        services.AddDbContext<ProductDbContext>(options => options.UseSqlServer(AppSettings.ConnectionStrings.SQLServer));
+        services.AddDbContext<ProductDbContext>(options 
+            => options.UseSqlServer(AppSettings.ConnectionStrings.SQLServer));
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     }
