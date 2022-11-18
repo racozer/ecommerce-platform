@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore;
 using Platform.Api.Core.ApplicationRunner;
 
 
@@ -10,12 +9,4 @@ public class Program
     {
         ApiRunner.RunApi<Startup>();
     }
-
-/*    public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-        => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
-
-    public static void Main(string[] args)
-    {
-        CreateWebHostBuilder(args).Build().Run();
-    }*/
 }
