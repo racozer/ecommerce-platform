@@ -10,6 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<PackageReference Include="Mapster" Version="7.3.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
 	<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
@@ -30,12 +32,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.ApplicationRunner\Platform.Api.Core.ApplicationRunner.csproj" />
+    <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.BuildingBlocks\Platform.Api.Core.BuildingBlocks.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.ApplicationRunner\Platform.Api.Core.ApplicationRunner.csproj" />
-    <ProjectReference Include="..\..\..\..\Core\Platform.Api.Core.BuildingBlocks\Platform.Api.Core.BuildingBlocks.csproj" />
+    <Folder Include="Models\Response\" />
+    <Folder Include="Models\Request\" />
   </ItemGroup>
 
 </Project>
