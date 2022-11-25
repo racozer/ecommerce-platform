@@ -36,5 +36,9 @@ public class HttpStatusLoggerMiddleware
 
         if (statusCodes.Contains(code))
             _logger.LogWarning($"StatusCode: {code}, UserId: {userId}, Path: {path}, Method: {method}, IP: {remoteIp}");
+        else
+        {
+            _logger.LogInformation($"StatusCode: {code}, UserId: {userId}, Path: {path}, Method: {method}, IP: {remoteIp}");
+        }
     }
 }
