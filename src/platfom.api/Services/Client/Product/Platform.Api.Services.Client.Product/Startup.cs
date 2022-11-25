@@ -37,6 +37,7 @@ public class Startup
             setup.DefaultApiVersion = new ApiVersion(1, 0);
             setup.AssumeDefaultVersionWhenUnspecified = true;
             setup.ReportApiVersions = true;
+            setup.RegisterMiddleware = true;
         });
 
         services.AddEndpointsApiExplorer();
@@ -64,15 +65,16 @@ public class Startup
             });
         }
 
+        app.UseExceptionHandlerMiddleware();
+        app.UseHttpStatusLoggerMiddleware();
+
+        app.UseHttpLogging();
+
         app.UseApiVersioning();
 
         app.UseRouting();
 
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
-        app.UseMiddleware<ExceptionHandlerMiddleware>();
-
-        app.UseHttpLogging();
 
         app.UseHttpsRedirection();
     }
