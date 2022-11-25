@@ -8,8 +8,17 @@ public class ApiRunner
 {
     public static void RunApi<TStartup>() where TStartup : class
     {
-        var app = WebHost.CreateDefaultBuilder().UseStartup<TStartup>().Build();
+		try
+		{
+            var builder = WebHost.CreateDefaultBuilder();
 
-        app.Run();
+            var app = builder.UseStartup<TStartup>();
+
+            app.Build().Run();
+        }
+        catch (Exception ex)
+		{
+            throw;
+		}
     }
 }
