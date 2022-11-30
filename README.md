@@ -1,3 +1,3 @@
-## Solution Api Overview
+# Solution Api Structure
 
-<img src="solution.jpg">
+![alt text](solution.jpg)
