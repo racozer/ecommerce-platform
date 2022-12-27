@@ -49,18 +49,18 @@ public class ProductBrandController : ControllerBase
 
     [HttpPost("add-brand")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ApiResponse> AddBrand([FromBody] ProductBrandDto brandRequest)
+    public async Task<ApiResponse> AddBrand([FromBody] ProductBrandDto request)
     {
-        await _productBrandService.AddBrand(brandRequest);
+        await _productBrandService.AddBrand(request);
 
         return new ApiResponse() { Result = true };
     }
 
     [HttpPut("update-brand")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<ApiResponse> UpdateBrand([FromBody] ProductBrandDto categoryRequest)
+    public async Task<ApiResponse> UpdateBrand([FromBody] ProductBrandDto request)
     {
-        await _productBrandService.UpdateBrand(categoryRequest);
+        await _productBrandService.UpdateBrand(request);
 
         return new ApiResponse() { Result = true };
     }
