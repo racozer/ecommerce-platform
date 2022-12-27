@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 
 namespace Platform.Core.Extensions;
@@ -11,15 +10,13 @@ public class ApiRunner
     {
         try
         {
-            IWebHostBuilder builder = WebHost.CreateDefaultBuilder();
-
-            builder.ConfigureServices(s => s.AddHttpContextAccessor());
-
-            var app = builder.UseStartup<TStartup>();
-
-            app.Build().Run();
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(
+                webBuilder =>
+                {
+                    webBuilder.UseStartup<TStartup>();
+                }).Build().Run();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             throw;
         }
