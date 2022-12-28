@@ -4,13 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Platform.Infrastructure.Middlewares;
-using Platform.Services.Client.Product.Configuration;
-using Platform.Services.Client.Product.Data;
-using Platform.Services.Client.Product.Repository;
-using Platform.Services.Client.Product.Repository.Abstractions;
-using Platform.Services.Client.Product.Services;
-using Platform.Services.Client.Product.Services.Abstractions;
+using Platform.Services.Storage.Configuration;
+using Platform.Services.Storage.Data;
+using Platform.Services.Storage.Services;
+using Platform.Services.Storage.Services.Abstractions;
 
+
+namespace Platform.Services.Storage;
 
 public class Startup
 {
@@ -43,14 +43,10 @@ public class Startup
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
-        services.AddDbContext<ProductDbContext>(options
+        services.AddDbContext<StorageDbContext>(options
             => options.UseSqlServer(AppSettings.ConnectionStrings.SQLServer));
 
-        services.AddScoped<ICategoryService, CategoryService>();
-        services.AddScoped<ICategoryRepository, CategoryRepository>();
-
-        services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
-        services.AddScoped<IProductBrandService, ProductBrandService>();
+        services.AddScoped<IStorageService, AzureStorageService>();
 
         services.AddApiVersioning();
 
