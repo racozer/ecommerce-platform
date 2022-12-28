@@ -49,6 +49,9 @@ public class Startup
         services.AddScoped<ICategoryService, CategoryService>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+        services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
+        services.AddScoped<IProductBrandService, ProductBrandService>();
+
         services.AddApiVersioning();
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
