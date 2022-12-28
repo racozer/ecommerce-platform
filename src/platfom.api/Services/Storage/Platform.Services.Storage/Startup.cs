@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Platform.Infrastructure.Middlewares;
 using Platform.Services.Storage.Configuration;
 using Platform.Services.Storage.Data;
+using Platform.Services.Storage.Services;
+using Platform.Services.Storage.Services.Abstractions;
 
 
 namespace Platform.Services.Storage;
@@ -44,6 +46,7 @@ public class Startup
         services.AddDbContext<StorageDbContext>(options
             => options.UseSqlServer(AppSettings.ConnectionStrings.SQLServer));
 
+        services.AddScoped<IStorageService, AzureStorageService>();
 
         services.AddApiVersioning();
 
